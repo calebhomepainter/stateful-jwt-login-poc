@@ -6,7 +6,7 @@ var csrfProtection = csrf({cookie: true});
 
 /* GET home page. */
 router.get('/', csrfProtection, function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Express', csrfToken: req.csrfToken() });
 });
 
 module.exports = router;

@@ -5,9 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 
-const csrf = require('csurf');
-const jwt = require('jsonwebtoken');
-const reqValidate = require('./models/user');
+//const csrf = require('csurf');
+//const jwt = require('jsonwebtoken');
 
 var indexRouter = require('./routes/index');
 var profileRouter = require('./routes/profile');
@@ -20,46 +19,43 @@ mongoose.connect('mongodb://localhost/login-poc', () => { console.log("[+] Succe
 
 var app = express();
 
-// view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'jade');
-app.use(express.static(__dirname + '/dist'));
+
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
-app.use(csrf({cookie: true}));
+//app.use(csrf({cookie: true}));
 // TODO CSRF token needs to be set as soon as the user visits the site
-app.use(function(req, res, next) {
+//app.use(function(req, res, next) {
 
   // check request body for hidden field
-  if(!req.body.x_csrf_token){
-    res.X_CSRF_Token = req.csrfToken();
-  }
+  //if(!req.body.x_csrf_token){
+  //  res.X_CSRF_Token = req.csrfToken();
+  //}
 
   //////////////////////////////////
 
-  if(req.cookies){
+  //if(req.cookies){
 
-  }
+  //}
 
-  let reqBodyToJson = JSON.stringify(req.body);
+  //let reqBodyToJson = JSON.stringify(req.body);
 
 
   // unsure if this cookie should be signed ???
   // make sure csrf token is non-http
-  if(!reqBodyToJson.csrf_token) {
-    res.body = req.csrfToken();
-  }
+  //if(!reqBodyToJson.csrf_token) {
+  //  res.body = req.csrfToken();
+  //}
 
 
-  console.log('start of middleware');
-  console.log(res.body);
-  next();
-});
+//   console.log('start of middleware');
+//   console.log(res.body);
+//   next();
+// });
 
 // TODO ADD MIDDLEWARE FOR EXPIRED TOKEN/TOKEN ACCESS POLICIES/TOKEN VALIDATION
 
@@ -73,6 +69,7 @@ app.use(function(req, res, next) {
 app.use(function(req, res, next) {
   //const decodedPayload = jwt.verify(req.cookies.access_token)
   console.log(req.cookies);
+  console.log(req.body);
   //console.log(jwt.verify(req.cookies));
   console.log('end of middleware');
   next();

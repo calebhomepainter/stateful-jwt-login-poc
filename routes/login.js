@@ -6,12 +6,14 @@ const login = require('../models/user');
 
 var csrfProtection = csrf({cookie: true});
 /* GET login page. */
-router.get('/', function(req, res, next) {
-    res.render('login', { title: 'Express' });
+router.get('/', csrfProtection, function(req, res, next) {
+    res.render('login', { csrfToken: req.csrfToken() });
 });
 
 /* POST login credentials */
-router.post("/", async function(req, res, next) {
+router.post("/", csrfProtection, async function(req, res, next) {
+
+    // TODO: MIDDLEWARE MAY ALREADY CHECK FOR CSRF TOKEN, OR WE MAY NEED TO CHECK FOR CSRF TOKEN
 
     let user = login.getUserByEmail(req.body.email);
 
@@ -29,11 +31,10 @@ router.post("/", async function(req, res, next) {
 
     res.cookie('refresh_token', httpCookies.refreshToken, { httpOnly: true });
 
-    //res.header("Set-Cookie", httpCookies);
 
     // send csrf token cookie and any other required data in body
     // make sure csrf token is non-http
-    res.send(tokens[2]);
+    res.send('successful login');
 });
 
 module.exports = router;

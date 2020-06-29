@@ -7,20 +7,20 @@ var csrfProtection = csrf({cookie: true});
 
 /* GET home page. */
 router.get('/', csrfProtection, function(req, res, next) {
-    res.render('register', { title: 'Express' });
+    res.render('register', { csrfToken: req.csrfToken() });
 });
 
 /* POST login credentials */
-router.post("/", async function(req, res, next) {
+router.post("/", csrfProtection, async function(req, res, next) {
 
-    //console.log(req.body);
+    // TODO: MIDDLEWARE MAY ALREADY CHECK FOR CSRF TOKEN, OR WE MAY NEED TO CHECK FOR CSRF TOKEN
+
     let newUser = {
         email: req.body.email,
         password: req.body.password
     }
+
     const tokens = await register.registerUser(newUser);
-    //console.log(tokens);
-    //const tokens = await login.loginUser(req.body.password, user.password, user._id);
 
     const httpCookies = {
         accessToken: tokens[0],
