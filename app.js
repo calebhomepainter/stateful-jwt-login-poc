@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 
-//const csrf = require('csurf');
+const csrf = require('csurf');
 //const jwt = require('jsonwebtoken');
 
 var indexRouter = require('./routes/index');
@@ -97,7 +97,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.json('error');
+  res.json(err);
 });
 
 module.exports = app;

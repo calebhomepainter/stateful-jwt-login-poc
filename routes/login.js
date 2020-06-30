@@ -1,17 +1,21 @@
 const express = require('express');
-const router = express.Router();
-const csrf = require('csurf');
+var cookieParser = require('cookie-parser');
 const login = require('../models/user');
+const bodyParser = require('body-parser');
+const csrf = require('csurf');
+const router = express.Router();
 
+var parseForm = bodyParser.urlencoded({ extended: false });
+//var parseCookies = cookieParser();
+var csrfProtection = csrf({cookie: true, signed: true});
 
-var csrfProtection = csrf({cookie: true});
 /* GET login page. */
-router.get('/', csrfProtection, function(req, res, next) {
+router.get('/', function(req, res, next) {
     res.render('login', { csrfToken: req.csrfToken() });
 });
 
 /* POST login credentials */
-router.post("/", csrfProtection, async function(req, res, next) {
+router.post("/", parseForm, csrfProtection, async function(req, res, next) {
 
     // TODO: MIDDLEWARE MAY ALREADY CHECK FOR CSRF TOKEN, OR WE MAY NEED TO CHECK FOR CSRF TOKEN
 

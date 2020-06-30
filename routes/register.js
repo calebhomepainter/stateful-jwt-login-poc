@@ -1,19 +1,23 @@
 var express = require('express');
 const register = require('../models/user');
-var router = express.Router();
+const bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 const csrf = require('csurf');
+var router = express.Router();
 
-var csrfProtection = csrf({cookie: true});
+var parseForm = bodyParser.urlencoded({ extended: false });
+//var parseCookies = cookieParser();
+var csrfProtection = csrf({cookie: true, signed: true});
 
 /* GET home page. */
-router.get('/', csrfProtection, function(req, res, next) {
-    res.render('register', { csrfToken: req.csrfToken() });
+router.get('/', function(req, res, next) {
+    let token = req.csrfToken();
+    console.log(token);
+    res.render('register', { csrfToken: token });
 });
 
 /* POST login credentials */
-router.post("/", async function(req, res, next) {
-
-    // TODO: MIDDLEWARE MAY ALREADY CHECK FOR CSRF TOKEN, OR WE MAY NEED TO CHECK FOR CSRF TOKEN
+router.post("/", parseForm, csrfProtection, async function(req, res, next) {
 
     let newUser = {
         email: req.body.email,

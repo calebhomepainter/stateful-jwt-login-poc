@@ -36,11 +36,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _routes_login_login_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./routes/login/login.component */ "./src/app/routes/login/login.component.ts");
-/* harmony import */ var _routes_register_register_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./routes/register/register.component */ "./src/app/routes/register/register.component.ts");
-/* harmony import */ var _routes_logout_logout_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./routes/logout/logout.component */ "./src/app/routes/logout/logout.component.ts");
-/* harmony import */ var _routes_profile_profile_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./routes/profile/profile.component */ "./src/app/routes/profile/profile.component.ts");
+/* harmony import */ var _routes_login_login_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./routes/login/login.component */ "./src/app/routes/login/login.component.ts");
+/* harmony import */ var _routes_register_register_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./routes/register/register.component */ "./src/app/routes/register/register.component.ts");
+/* harmony import */ var _routes_logout_logout_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./routes/logout/logout.component */ "./src/app/routes/logout/logout.component.ts");
+/* harmony import */ var _routes_profile_profile_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./routes/profile/profile.component */ "./src/app/routes/profile/profile.component.ts");
+/* harmony import */ var _routes_home_home_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./routes/home/home.component */ "./src/app/routes/home/home.component.ts");
 
 
 
@@ -53,24 +53,24 @@ __webpack_require__.r(__webpack_exports__);
 
 const routes = [
     {
+        path: '',
+        component: _routes_home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"], data: { name: 'home' }
+    },
+    {
         path: 'login',
-        component: _routes_login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"], data: { name: 'login' }
+        component: _routes_login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"], data: { name: 'login' }
     },
     {
         path: 'register',
-        component: _routes_register_register_component__WEBPACK_IMPORTED_MODULE_5__["RegisterComponent"], data: { name: 'register' }
+        component: _routes_register_register_component__WEBPACK_IMPORTED_MODULE_4__["RegisterComponent"], data: { name: 'register' }
     },
     {
         path: 'logout',
-        component: _routes_logout_logout_component__WEBPACK_IMPORTED_MODULE_6__["LogoutComponent"], data: { name: 'logout' }
-    },
-    {
-        path: '',
-        component: _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"], data: { name: 'home' }
+        component: _routes_logout_logout_component__WEBPACK_IMPORTED_MODULE_5__["LogoutComponent"], data: { name: 'logout' }
     },
     {
         path: 'profile',
-        component: _routes_profile_profile_component__WEBPACK_IMPORTED_MODULE_7__["ProfileComponent"], data: { name: 'profile' }
+        component: _routes_profile_profile_component__WEBPACK_IMPORTED_MODULE_6__["ProfileComponent"], data: { name: 'profile' }
     },
 ];
 class AppRoutingModule {
@@ -168,6 +168,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _routes_logout_logout_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./routes/logout/logout.component */ "./src/app/routes/logout/logout.component.ts");
 /* harmony import */ var _routes_profile_profile_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./routes/profile/profile.component */ "./src/app/routes/profile/profile.component.ts");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _routes_home_home_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./routes/home/home.component */ "./src/app/routes/home/home.component.ts");
+
 
 
 
@@ -189,7 +191,8 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjector
         _routes_login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"],
         _routes_register_register_component__WEBPACK_IMPORTED_MODULE_5__["RegisterComponent"],
         _routes_logout_logout_component__WEBPACK_IMPORTED_MODULE_6__["LogoutComponent"],
-        _routes_profile_profile_component__WEBPACK_IMPORTED_MODULE_7__["ProfileComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
+        _routes_profile_profile_component__WEBPACK_IMPORTED_MODULE_7__["ProfileComponent"],
+        _routes_home_home_component__WEBPACK_IMPORTED_MODULE_9__["HomeComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
         _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"]] }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](AppModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"],
@@ -199,7 +202,8 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjector
                     _routes_login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"],
                     _routes_register_register_component__WEBPACK_IMPORTED_MODULE_5__["RegisterComponent"],
                     _routes_logout_logout_component__WEBPACK_IMPORTED_MODULE_6__["LogoutComponent"],
-                    _routes_profile_profile_component__WEBPACK_IMPORTED_MODULE_7__["ProfileComponent"]
+                    _routes_profile_profile_component__WEBPACK_IMPORTED_MODULE_7__["ProfileComponent"],
+                    _routes_home_home_component__WEBPACK_IMPORTED_MODULE_9__["HomeComponent"]
                 ],
                 imports: [
                     _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -209,6 +213,42 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjector
                 bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
             }]
     }], null, null); })();
+
+
+/***/ }),
+
+/***/ "./src/app/routes/home/home.component.ts":
+/*!***********************************************!*\
+  !*** ./src/app/routes/home/home.component.ts ***!
+  \***********************************************/
+/*! exports provided: HomeComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeComponent", function() { return HomeComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+
+class HomeComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+}
+HomeComponent.ɵfac = function HomeComponent_Factory(t) { return new (t || HomeComponent)(); };
+HomeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HomeComponent, selectors: [["app-home"]], decls: 2, vars: 0, template: function HomeComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "home works!");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3JvdXRlcy9ob21lL2hvbWUuY29tcG9uZW50LmNzcyJ9 */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](HomeComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-home',
+                templateUrl: './home.component.html',
+                styleUrls: ['./home.component.css']
+            }]
+    }], function () { return []; }, null); })();
 
 
 /***/ }),
@@ -363,7 +403,7 @@ class RegisterComponent {
     }
     ngOnInit() {
         this.csrfToken = this.cookieService.get("_csrf");
-        //console.log(this.csrfToken);
+        console.log('client side ' + this.csrfToken);
     }
 }
 RegisterComponent.ɵfac = function RegisterComponent_Factory(t) { return new (t || RegisterComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](ngx_cookie_service__WEBPACK_IMPORTED_MODULE_1__["CookieService"])); };
