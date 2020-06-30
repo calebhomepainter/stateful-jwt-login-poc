@@ -4,24 +4,20 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+const morgan = require('morgan');
 
 const csrf = require('csurf');
 //const jwt = require('jsonwebtoken');
 
-var indexRouter = require('./routes/index');
-var profileRouter = require('./routes/profile');
-var loginRouter = require('./routes/login');
-var logoutRouter = require('./routes/logout');
-var registerRouter = require('./routes/register');
+const apiRoutes = require('./routes/api');
 
 
 mongoose.connect('mongodb://localhost/login-poc', () => { console.log("[+] Succesfully connected to database."); });
 
 var app = express();
+app.use(morgan('common', {}));
+app.use('/api', apiRoutes);
 
-// view engine setup
-//app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'html');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -75,14 +71,6 @@ app.use(function(req, res, next) {
   console.log('end of middleware');
   next();
 })
-
-
-
-app.use('/', indexRouter);
-app.use('/profile', profileRouter);
-app.use('/login',loginRouter);
-app.use('/logout', logoutRouter);
-app.use('/register', registerRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
