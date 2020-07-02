@@ -63,12 +63,9 @@ module.exports.registerUser = async function(newUser) {
 module.exports.loginUser = async function(candidatePassword, hash, _id) {
     const isVerified = await argon2.verify(hash, candidatePassword);
         if(isVerified){
-            // generate access, refresh, and csrf tokens
+            // generate access & refresh
             const accessToken = this.generateJwtAccessToken();
             const refreshToken = this.generateJwtRefreshToken(_id);
-
-
-            //
 
             const tokenArray = [
                 {
@@ -107,5 +104,58 @@ module.exports.generateJwtRefreshToken = function(_id) {
         // ID
         _id: _id
     }, "MY_SECRET", {expiresIn: 1209600});
+};
+
+// VAlIDATE ACCESS TOKEN
+module.exports.validateJwtAccessToken = async function(token) {
+    let result = false;
+    if(!token){
+        return result;
+    }
+
+    // TODO check block list
+    console.log(token)
+    const verdict = await jwt.verify(token, "MY_SECRET", function(err, decoded){
+        if (err){
+            // need to determine why it failed - block list, access policies, or invalid
+            console.log(err);
+            return result;
+        }
+        else{
+            result = true;
+            return result;
+        }
+    });
+
+    return verdict;
+};
+
+// VALIDATE REFRESH TOKEN
+module.exports.validateJwtRefreshToken = async function(token) {
+    let result = false;
+    if(!token){
+        console.log('please sign in');
+        return result;
+    }
+
+    // TODO check block list
+    console.log(token)
+    const verdict = await jwt.verify(token, "MY_SECRET", function(err, decoded){
+        if (err){
+            // need to determine why it failed
+            console.log(err);
+            console.log('please sign in');
+            return result;
+        }
+
+        else {
+            // update access token
+            console.log('grant access');
+            result = true;
+            return result;
+        }
+    });
+
+    return verdict;
 };
 
